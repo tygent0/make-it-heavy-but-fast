@@ -149,7 +149,7 @@ Edit `config.yaml` to customize behavior:
 ```yaml
 # OpenRouter API settings
 openrouter:
-  api_key: "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"
+  api_key: "YOUR KEY"
   base_url: "https://openrouter.ai/api/v1"
   model: "openai/gpt-4.1-mini"  # Change model here
 
