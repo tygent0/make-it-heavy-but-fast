@@ -349,3 +349,7 @@ See [LICENSE](LICENSE) file for full details.
 ```bash
 uv run make_it_heavy.py
 ```
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Doriandarko/make-it-heavy&type=Date)](https://www.star-history.com/#Doriandarko/make-it-heavy&Date)
