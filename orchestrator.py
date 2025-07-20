@@ -105,12 +105,14 @@ class TaskOrchestrator:
             }
 
     async def run_agent_async(self, agent_id: int, subtask: str) -> Dict[str, Any]:
-        """Asynchronous agent execution used with Tygent."""
+        """Run the regular agent logic without blocking the event loop."""
         try:
             self.update_agent_progress(agent_id, "PROCESSING...")
             agent = OpenRouterAgent(silent=True)
             start_time = time.time()
-            response = await agent.run_async(subtask)
+            # ``agent.run`` is synchronous, so run it in a thread to avoid
+            # blocking the asyncio scheduler used by Tygent.
+            response = await asyncio.to_thread(agent.run, subtask)
             execution_time = time.time() - start_time
             self.update_agent_progress(agent_id, "COMPLETED", response)
             return {
